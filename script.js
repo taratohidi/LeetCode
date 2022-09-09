@@ -166,17 +166,47 @@
 
 /////////////////////////
 //#21. Merge Two Sorted Lists
-const mergeTwoList = function (arr1, arr2) {
-  const arr = [...arr1, ...arr2];
-  const sortedArr = arr.sort((a, b) => a - b);
-  return sortedArr;
-};
+// const mergeTwoList = function (arr1, arr2) {
+//   const arr = [...arr1, ...arr2];
+//   const sortedArr = arr.sort((a, b) => a - b);
+//   return sortedArr;
+// };
 
-console.log(mergeTwoList([], [0]));
+// console.log(mergeTwoList([], [0]));
 
 /////////////////////////
 //#21. Merge Two Sorted Lists
 
 // const removeDuplicates = function (nums) {
-//   const setNums = new set();
+//   // const setNums = new Set(nums);
+//   // const expectedNums = [];
+//   // setNums.forEach((value) => {
+//   //   expectedNums.push(value);
+//   // });
+//   const expectedNums = nums.filter((el, i) => {
+//     return nums.indexOf(el) === i;
+//   });
+
+//   return expectedNums.length, expectedNums;
 // };
+// console.log(removeDuplicates([1, 1, 2]));
+
+var removeDuplicates = function (nums) {
+  const length = nums.length;
+
+  if (length <= 1) {
+    return length;
+  }
+
+  let i = 0;
+
+  for (let j = 1; j < length; j++) {
+    if (nums[i] != nums[j]) {
+      i++;
+      nums[i] = nums[j];
+    }
+  }
+
+  return i + 1;
+};
+console.log(removeDuplicates([1, 1, 2]));
