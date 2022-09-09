@@ -100,26 +100,66 @@
 
 /////////////////////////
 //#14. Longest Common Prefix
-const longestCommonPrefix = function (strs) {
-  let prefix = "";
-  if (!strs[0] || strs.length === 1) return strs[0] || prefix;
+// const longestCommonPrefix = function (strs) {
+//   let prefix = "";
+//   if (!strs[0] || strs.length === 1) return strs[0] || prefix;
 
-  for (let i = 0; i < strs[0].length; i++) {
-    let commonPrefix = strs[0][i];
+//   for (let i = 0; i < strs[0].length; i++) {
+//     let commonPrefix = strs[0][i];
 
-    for (let j = 0; j < strs.length; j++) {
-      if (strs[j][i] !== commonPrefix) return prefix;
+//     for (let j = 0; j < strs.length; j++) {
+//       if (strs[j][i] !== commonPrefix) return prefix;
+//     }
+
+//     prefix = prefix + commonPrefix;
+//   }
+//   return prefix;
+// };
+
+// console.log("---challange 14---");
+// console.log(longestCommonPrefix(["flower", "flow", "flight"]));
+// console.log(longestCommonPrefix(["dog", "racecar", "car"]));
+// console.log(longestCommonPrefix(["abc"]));
+// console.log(longestCommonPrefix(["abcdefgh", "abcde", "abe"]));
+// console.log(longestCommonPrefix(["abc", "abc", "abc"]));
+// console.log(longestCommonPrefix(["abc", "abcde", "xyz"]));
+
+/////////////////////////
+//#20. Valid Parentheses
+const isValid = function (str) {
+  let arr = [];
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === "(" || str[i] === "[" || str[i] === "{") {
+      arr.push(str[i]);
+    } else if (
+      str[i] === ")" &&
+      arr.length !== 0 &&
+      arr[arr.length - 1] === "("
+    ) {
+      arr.pop();
+    } else if (
+      str[i] === "}" &&
+      arr.length !== 0 &&
+      arr[arr.length - 1] === "{"
+    ) {
+      arr.pop();
+    } else if (
+      str[i] === "]" &&
+      arr.length !== 0 &&
+      arr[arr.length - 1] === "["
+    ) {
+      arr.pop();
+    } else {
+      return false;
     }
-
-    prefix = prefix + commonPrefix;
   }
-  return prefix;
+
+  return arr.length === 0;
 };
 
-console.log("---challange 14---");
-console.log(longestCommonPrefix(["flower", "flow", "flight"]));
-console.log(longestCommonPrefix(["dog", "racecar", "car"]));
-console.log(longestCommonPrefix(["abc"]));
-console.log(longestCommonPrefix(["abcdefgh", "abcde", "abe"]));
-console.log(longestCommonPrefix(["abc", "abc", "abc"]));
-console.log(longestCommonPrefix(["abc", "abcde", "xyz"]));
+console.log(isValid("()[]{}"));
+console.log(isValid("()"));
+console.log(isValid("(){}}{"));
+console.log(isValid("([)]"));
+console.log(isValid("{[]}"));
