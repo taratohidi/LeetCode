@@ -126,40 +126,57 @@
 
 /////////////////////////
 //#20. Valid Parentheses
-const isValid = function (str) {
-  let arr = [];
+// const isValid = function (str) {
+//   let arr = [];
 
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === "(" || str[i] === "[" || str[i] === "{") {
-      arr.push(str[i]);
-    } else if (
-      str[i] === ")" &&
-      arr.length !== 0 &&
-      arr[arr.length - 1] === "("
-    ) {
-      arr.pop();
-    } else if (
-      str[i] === "}" &&
-      arr.length !== 0 &&
-      arr[arr.length - 1] === "{"
-    ) {
-      arr.pop();
-    } else if (
-      str[i] === "]" &&
-      arr.length !== 0 &&
-      arr[arr.length - 1] === "["
-    ) {
-      arr.pop();
-    } else {
-      return false;
-    }
-  }
+//   for (let i = 0; i < str.length; i++) {
+//     if (str[i] === "(" || str[i] === "[" || str[i] === "{") {
+//       arr.push(str[i]);
+//     } else if (
+//       str[i] === ")" &&
+//       arr.length !== 0 &&
+//       arr[arr.length - 1] === "("
+//     ) {
+//       arr.pop();
+//     } else if (
+//       str[i] === "}" &&
+//       arr.length !== 0 &&
+//       arr[arr.length - 1] === "{"
+//     ) {
+//       arr.pop();
+//     } else if (
+//       str[i] === "]" &&
+//       arr.length !== 0 &&
+//       arr[arr.length - 1] === "["
+//     ) {
+//       arr.pop();
+//     } else {
+//       return false;
+//     }
+//   }
 
-  return arr.length === 0;
+//   return arr.length === 0;
+// };
+
+// console.log(isValid("()[]{}"));
+// console.log(isValid("()"));
+// console.log(isValid("(){}}{"));
+// console.log(isValid("([)]"));
+// console.log(isValid("{[]}"));
+
+/////////////////////////
+//#21. Merge Two Sorted Lists
+const mergeTwoList = function (arr1, arr2) {
+  const arr = [...arr1, ...arr2];
+  const sortedArr = arr.sort((a, b) => a - b);
+  return sortedArr;
 };
 
-console.log(isValid("()[]{}"));
-console.log(isValid("()"));
-console.log(isValid("(){}}{"));
-console.log(isValid("([)]"));
-console.log(isValid("{[]}"));
+console.log(mergeTwoList([], [0]));
+
+/////////////////////////
+//#21. Merge Two Sorted Lists
+
+// const removeDuplicates = function (nums) {
+//   const setNums = new set();
+// };
